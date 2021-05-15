@@ -245,7 +245,7 @@ class MaterialSearchView @JvmOverloads constructor(
 
         // Initialize the search view.
         initSearchView()
-        adapter = CursorSearchAdapter(mContext, historyCursor, 0)
+        adapter = CursorSearchAdapter(mContext, null, 0)
 
         adapter.setFilterQueryProvider(FilterQueryProvider { constraint ->
             val filter = constraint.toString()
