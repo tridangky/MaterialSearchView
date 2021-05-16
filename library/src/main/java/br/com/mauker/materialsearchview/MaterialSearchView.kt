@@ -245,7 +245,7 @@ class MaterialSearchView @JvmOverloads constructor(
 
         // Initialize the search view.
         initSearchView()
-        adapter = CursorSearchAdapter(mContext, null, 0)
+        adapter = CursorSearchAdapter(mContext, null, 0)  // đã fix cursor = historyCursor = null
 
         adapter.setFilterQueryProvider(FilterQueryProvider { constraint ->
             val filter = constraint.toString()
@@ -692,6 +692,10 @@ class MaterialSearchView @JvmOverloads constructor(
         // Set background color of search bar.
         mSearchEditText.setBackgroundColor(color)
     }
+    fun setSearchBarBackground(resid: Int) {
+        // Set background resource of search bar.
+        mSearchBar.setBackgroundResource(resid)
+    }
 
     /**
      * Change the color of the background tint.
@@ -1064,7 +1068,7 @@ class MaterialSearchView @JvmOverloads constructor(
         addSuggestions(list)
     }
 
-    private val historyCursor: Cursor?
+    private val  historyCursor: Cursor?
         get() = mContext.contentResolver.query(
                 HistoryContract.HistoryEntry.CONTENT_URI,
                 null,
